@@ -8,7 +8,7 @@
     "test": "tests"
   },
   "scripts": {
-    "start": "node ./dist/app.js",
+    "start": "node dist/app.js",
     "dev": "npx nodemon",
     "build": "tsc -p .",
     "build:start": "npm run build && npm run start",
@@ -21,6 +21,7 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "typescript": "^5.9.2"
   }
 }

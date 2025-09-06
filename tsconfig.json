@@ -5,22 +5,24 @@
       "typeRoots": [
         "types",
         "./node_modules/@types"
-    ] /* Specify multiple folders that act like `./node_modules/@types`. */,                
-      "rootDir": "src",                       
+       ] /* Specify multiple folders that act like `./node_modules/@types`. */,                
+      "rootDir": ".",                       
       "outDir": "./dist",                       
       "strict": true,                         
       "esModuleInterop": true,                
       "skipLibCheck": true,                   
       "forceConsistentCasingInFileNames": true,
-      "resolveJsonModule": true,              
+      "resolveJsonModule": true, 
+      "sourceMap": true,
+      "incremental": true
+             
     },
 
     "exclude": ["node_modules", "dist", "tests", ".vscode"],
     "include": [
         "src",
         "migrations",
-        "**/*.json",
-        "**/*.tsx",
+        "**/*.json", 
     ]
   }
 
