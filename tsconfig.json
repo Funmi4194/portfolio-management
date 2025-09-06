@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+      "target": "ES2020",                     
+      "module": "CommonJS",   
+      "typeRoots": [
+        "types",
+        "./node_modules/@types"
+    ] /* Specify multiple folders that act like `./node_modules/@types`. */,                
+      "rootDir": "src",                       
+      "outDir": "./dist",                       
+      "strict": true,                         
+      "esModuleInterop": true,                
+      "skipLibCheck": true,                   
+      "forceConsistentCasingInFileNames": true,
+      "resolveJsonModule": true,              
+    },
+
+    "exclude": ["node_modules", "dist", "tests", ".vscode"],
+    "include": [
+        "src",
+        "migrations"
+        "**/*.json"
+    ]
+  }
+

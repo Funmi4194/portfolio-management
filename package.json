@@ -1,0 +1,26 @@
+{
+  "name": "portfolio-management",
+  "version": "1.0.0",
+  "description": "A crypto portfolio management platform that handles real-time trading, portfolio tracking, and risk management",
+  "main": "dist/app.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "node ./dist/app.js",
+    "dev": "npx nodemon",
+    "build": "tsc -p .",
+    "build:start": "npm run build && npm run start",
+    "test": "jest --ci --color --coverage",
+    "test:partial": "jest --ci --silent --onlyChanged --color --coverage",
+    "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
