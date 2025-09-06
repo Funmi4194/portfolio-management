@@ -18,8 +18,9 @@
     "exclude": ["node_modules", "dist", "tests", ".vscode"],
     "include": [
         "src",
-        "migrations"
-        "**/*.json"
+        "migrations",
+        "**/*.json",
+        "**/*.tsx",
     ]
   }
 
