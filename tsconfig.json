@@ -6,7 +6,7 @@
         "types",
         "./node_modules/@types"
        ] /* Specify multiple folders that act like `./node_modules/@types`. */,                
-      "rootDir": ".",                       
+      "rootDir": "src",                       
       "outDir": "./dist",                       
       "strict": true,                         
       "esModuleInterop": true,                
@@ -15,7 +15,6 @@
       "resolveJsonModule": true, 
       "sourceMap": true,
       "incremental": true
-             
     },
 
     "exclude": ["node_modules", "dist", "tests", ".vscode"],
