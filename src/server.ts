@@ -7,6 +7,7 @@ import helmet from "helmet";
 import * as redis from './database/redis';
 import http, { Server } from 'http';
 import handleRouting from './routing';
+import { setupWebsocketRoutes } from './websocket';
 // import * as indexes from './database/indexes';
 
 
@@ -24,8 +25,9 @@ export default async function startApplication(app: Application): Promise<void> 
 
     await redis.createConnection();
 
-
     const httpServer = http.createServer(app);
+
+    setupWebsocketRoutes(httpServer)
 
     //  Start listening
     httpServer.listen(env.port, () => {
