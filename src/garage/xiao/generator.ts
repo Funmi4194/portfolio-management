@@ -297,7 +297,6 @@ export function mapsToLQuery(m: SQLMaps): string {
 
 export function parameterize(query: string, dialect = 'postgres'): string {
     if (dialect === 'mysql') {
-        console.log("hey")
         return query.replace(/\$\d+/g, '?');
     }
     return query;

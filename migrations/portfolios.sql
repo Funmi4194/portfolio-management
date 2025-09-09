@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS portfolios (
-    id SERIAL PRIMARY KEY,
-    user_id INT NOT NULL,
-    name VARCHAR(100) NOT NULL,
+    id CHAR(36) PRIMARY KEY,  
+    user_id VARCHAR NOT NULL,
+    name VARCHAR NOT NULL,
     base_currency VARCHAR(10) NOT NULL,
     total_value NUMERIC(18, 2) DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP

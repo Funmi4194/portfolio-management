@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS positions (
-    id SERIAL PRIMARY KEY,
-    portfolio_id INT NOT NULL REFERENCES portfolios(id) ON DELETE CASCADE,
-    symbol VARCHAR(20) NOT NULL,
+    id CHAR(36) PRIMARY KEY,  
+    portfolio_id VARCHAR NOT NULL,
+    symbol VARCHAR NOT NULL,
     quantity NUMERIC(18, 8) NOT NULL,
     avg_buy_price NUMERIC(18, 8) NOT NULL,
     current_price NUMERIC(18, 8),

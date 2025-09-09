@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS transactions (
-    id SERIAL PRIMARY KEY,
-    portfolio_id INT NOT NULL REFERENCES portfolios(id) ON DELETE CASCADE,
-    type VARCHAR(10) CHECK (type IN ('BUY', 'SELL')) NOT NULL,
+    id CHAR(36) PRIMARY KEY, 
+    portfolio_id VARCHAR NOT NULL,
+    type VARCHAR NOT NULL,
     symbol VARCHAR(20) NOT NULL,
     txhash VARCHAR(20) NOT NULL,
     quantity NUMERIC(18, 8) NOT NULL,

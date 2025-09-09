@@ -5,9 +5,10 @@ export enum TransactionType {
 
 export enum Currency {
     USD = "USD",
-    EUR = "EUR",
     BTC = "BTC",
     ETH = "ETH",
+    SOL = "SOL",
+    DOGE = "DOGE",
 }
 
 
