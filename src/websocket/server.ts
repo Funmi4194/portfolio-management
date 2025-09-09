@@ -3,7 +3,7 @@ import { WebSocketServer, WebSocket } from 'ws';
 import { parse } from 'url';
 import { PriceFeedService } from './price';
 
-const feed = new PriceFeedService();
+export const Feed = new PriceFeedService();
 
 type Inbound =
   | { action: 'subscribe'; symbols: string[] }
@@ -49,11 +49,11 @@ export function setupWebsocketRoutes(httpServer: HttpServer) {
         const msg = JSON.parse(raw.toString()) as Inbound;
 
         if (msg.action === 'subscribe' && Array.isArray(msg.symbols)) {
-          feed.subscribe(msg.symbols, ws);
+          Feed.subscribe(msg.symbols, ws);
           return;
         }
         if (msg.action === 'unsubscribe' && Array.isArray(msg.symbols)) {
-          feed.unsubscribe(msg.symbols, ws);
+          Feed.unsubscribe(msg.symbols, ws);
           return;
         }
         // ignore other actions silently to keep protocol clean

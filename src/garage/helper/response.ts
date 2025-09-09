@@ -5,6 +5,7 @@ import { logger } from '../log/logger';
 import { Error } from '../../types/error';
 import { Response } from 'express';
 import * as jwt from '../helper/jwt';
+import { IPagination } from '../../types/pagination';
 
 export const makeResponse = (
     status: boolean,
@@ -12,13 +13,15 @@ export const makeResponse = (
     data: any,
     code: number = 400,
     token?: string,
+    pagination?: IPagination,
 ): MakeResponse => {
     return {
         status,
         message,
         data,
         code,
-        token
+        token,
+        pagination,
     };
 };
 

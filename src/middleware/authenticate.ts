@@ -115,6 +115,7 @@ export const authenticate = (
                 if (!user) {
                     return response._sendErrorResponse(res, 'Please login again!', {}, 401);
                 }
+                req.user = user;
             }
         }
         for (const requirement of requirements) {

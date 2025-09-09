@@ -8,3 +8,17 @@ CREATE TABLE IF NOT EXISTS positions (
     unrealized_pnl NUMERIC(18, 8),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+
+DO $$
+BEGIN
+    IF NOT EXISTS (
+        SELECT 1
+        FROM pg_constraint
+        WHERE conname = 'unique_portfolio_id_symbol_positions'
+    ) THEN
+        ALTER TABLE positions
+        ADD CONSTRAINT unique_portfolio_id_symbol_positions UNIQUE (portfolio_id, symbol);
+    END IF;
+END$$;
+

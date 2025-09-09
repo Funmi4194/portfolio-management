@@ -5,7 +5,7 @@ import { getPool } from '../database/postgresql';
 
 
 class Transaction extends xiao.Xiao<ITransaction> {
-    protected tableName = 'users';
+    protected tableName = 'transactions';
 
     constructor(pool: xiao.XiaoPool) {
         super(pool);

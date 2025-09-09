@@ -5,7 +5,7 @@ import { getPool } from '../database/postgresql';
 
 
 class Position extends xiao.Xiao<IPosition> {
-    protected tableName = 'users';
+    protected tableName = 'positions';
 
     constructor(pool: xiao.XiaoPool) {
         super(pool);
@@ -14,7 +14,7 @@ class Position extends xiao.Xiao<IPosition> {
 
 let singleton: Position | null = null;
 
-export async function txRepository(): Promise<Position> {
+export async function positionRepository(): Promise<Position> {
   if (!singleton) {
     const pool = await getPool();   // ensures pool is ready
     singleton = new Position(pool);

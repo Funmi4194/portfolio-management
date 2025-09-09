@@ -2,7 +2,6 @@ import {userRepository} from '../../repository/user';
 import { ISignin, ISignup } from '../../types/auth';
 import { MakeResponse } from '../../types/generic';
 import * as response from '../../garage/helper/response';
-import { IUser } from '../../model/user';
 import * as jwt from '../../garage/helper/jwt';
 import { randomUUID } from 'crypto';
 import { compareHashedPassword, generateHashedPassword } from '../../garage/helper/bcrypt';
@@ -74,7 +73,7 @@ export async function signin(payload: ISignin): Promise<MakeResponse> {
                 );
             }
         }
-        const token = jwt.signToken({email: user.email});
+
         return response.respondWithToken(user, 'Login successful.');
     } catch (error: any) {
         return response.makeResponse(false, 'login failed! Please try again or contact support.', {});

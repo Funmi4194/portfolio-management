@@ -3,7 +3,6 @@ CREATE TABLE IF NOT EXISTS transactions (
     portfolio_id VARCHAR NOT NULL,
     type VARCHAR NOT NULL,
     symbol VARCHAR(20) NOT NULL,
-    txhash VARCHAR(20) NOT NULL,
     quantity NUMERIC(18, 8) NOT NULL,
     price NUMERIC(18, 8) NOT NULL,
     fees NUMERIC(18, 8) DEFAULT 0,

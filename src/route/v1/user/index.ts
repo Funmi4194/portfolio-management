@@ -9,7 +9,7 @@ import { authenticate } from '../../../middleware/authenticate';
 const router = Router();
 
 router.post('/signup', validator(authvalidator.signup, { body: true }, true), controller.create(authlogic.signup));
-router.post('/signin', 
+router.get('/signin', 
     validator(authvalidator.signin, { body: true }, true), 
     controller.create(authlogic.signin), 
 );
