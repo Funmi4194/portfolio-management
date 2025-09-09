@@ -1,3 +1,3 @@
 export * from './server';
 export * from './types';
-export * from './mock';
+export * from './price';

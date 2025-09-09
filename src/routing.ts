@@ -15,6 +15,7 @@ export default function handleRouting(app: Application): void {
             error: 'And Just Like That, You Completely Lost Your Way 😥',
         });
     });
+    
 
     // Error Handler
     app.use((error: Error) => {

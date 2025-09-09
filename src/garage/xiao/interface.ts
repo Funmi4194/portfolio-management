@@ -1,6 +1,6 @@
 import { SQLMaps, SQLOperator, XiaoPool, XiaoTx } from './types';
 import { mapsToIQuery, mapsToLQuery, mapsToOQuery, mapsToSQuery, mapsToWQuery, parameterize } from './generator';
-
+import { getPool } from '../../database/postgresql';
 /**
  * Xiao is a base class for postgres data models
  *
@@ -74,7 +74,7 @@ export class Xiao<T> {
         );
         return rows?.[0]?.[Object.keys(rows?.[0])?.[0]] ?? false;
     }
-
+    // const db = await getPool();
     /**
      * create creates a new record in the table
      * @param m is a map of columns and values to insert

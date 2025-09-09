@@ -1,10 +1,17 @@
 import { Router } from 'express';
+import validator from '../../../validator/validator';
+import * as controller from '../../../controller/base';
+import * as authvalidator from '../../../validator/user/auth';
+import * as authlogic from '../../../logic/user/auth';
+import { authenticate } from '../../../middleware/authenticate';
 
-// import portfolio from './portfolio';
 
 const router = Router();
 
-// auth(router);
-
+router.post('/signup', validator(authvalidator.signup, { body: true }, true), controller.create(authlogic.signup));
+router.post('/signin', 
+    validator(authvalidator.signin, { body: true }, true), 
+    controller.create(authlogic.signin), 
+);
 
 export default (app: Router) => app.use('/user', router);

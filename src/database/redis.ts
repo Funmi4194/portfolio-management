@@ -21,3 +21,30 @@ export async function createConnection(): Promise<RedisClientType> {
     }
     return redisClient;
 }
+
+
+
+export async function cacheGet(key: string): Promise<string | null> {
+    if (!isReady) await createConnection();
+    return redisClient.get(key);
+}
+  
+export async function cacheSet(key: string, value: string, ttlSeconds = 10): Promise<void> {
+    if (!isReady) await createConnection();
+    await redisClient.set(key, value, { EX: ttlSeconds });
+}
+
+export async function cacheDel(key: string): Promise<void> {
+    if (!isReady) await createConnection();
+    await redisClient.del(key);
+}
+
+export async function cacheIncr(key: string): Promise<number> {
+    if (!isReady) await createConnection();
+    return redisClient.incr(key);
+}
+  
+export async function cacheExpire(key: string, ttlSeconds: number): Promise<void> {
+    if (!isReady) await createConnection();
+    await redisClient.expire(key, ttlSeconds);
+}

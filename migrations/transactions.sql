@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS transactions (
+    id SERIAL PRIMARY KEY,
+    portfolio_id INT NOT NULL REFERENCES portfolios(id) ON DELETE CASCADE,
+    type VARCHAR(10) CHECK (type IN ('BUY', 'SELL')) NOT NULL,
+    symbol VARCHAR(20) NOT NULL,
+    txhash VARCHAR(20) NOT NULL,
+    quantity NUMERIC(18, 8) NOT NULL,
+    price NUMERIC(18, 8) NOT NULL,
+    fees NUMERIC(18, 8) DEFAULT 0,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

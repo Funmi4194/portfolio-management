@@ -36,10 +36,10 @@ export default {
             host: os.PG_HOST || 'localhost',
             port: Number(os.PG_PORT) || 5432,
             database: os.PG_DATABASE || 'typescript-graphql-api-template',
-            uri: `postgresql://${os.PG_USER}:${os.PG_PASSWORD}@${os.PG_HOST}:${Number(os.PG_PORT)}/${os.PG_DATABASE}`,
+            uri:   os.POSTGRESQL_URI || `postgresql://${os.PG_USER}:${os.PG_PASSWORD}@${os.PG_HOST}:${Number(os.PG_PORT)}/${os.PG_DATABASE}`,
         },
     },
-    
+ 
     mail: {
         host: os.MAIL_HOST || 'smtp.mailtrap.io',
         port: Number(os.MAIL_PORT) || 2525,

@@ -21,6 +21,15 @@ export default async function startApplication(app: Application): Promise<void> 
 
     app.use(logan);
 
+    app.on('uncaughtException', (err) => {
+        logger.error('Uncaught Exception', err);
+    });
+    app.on('unhandledRejection', (err) => {
+        logger.error('Unhandled Rejection', err);
+    });
+
+    await postgresql.migrate();
+
     await postgresql.openConnection();
 
     await redis.createConnection();

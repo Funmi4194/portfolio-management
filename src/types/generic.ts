@@ -7,6 +7,7 @@ export interface MakeResponse {
     data: Record<string, unknown> | null;
     code?: number;
     pagination?: IPagination;
+    token?: string; 
 }
 
 export interface IContext {

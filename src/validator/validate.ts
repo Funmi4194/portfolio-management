@@ -1,25 +1,13 @@
 import * as response from '../garage/helper/response';
-import Joi, { ObjectSchema } from 'joi';
+import Joi from 'joi';
 import { MakeResponse } from '../types/generic';
 
-export default function validate(
-  schema: ObjectSchema<any>,
-  payload: Record<string, any>
-): MakeResponse {
-  const { error, value } = schema.validate(payload, {
-    abortEarly: false,   // return all errors
-    stripUnknown: true,  // remove fields not in schema
-    convert: true        // cast values (string → number, etc.)
-  });
-
-  if (error) {
-    return response.makeResponse(
-      false,
-      error.details.map(d => d.message.replace(/"/g, '')).join(', '),
-      null,
-      400
-    );
-  }
-
-  return response.makeResponse(true, 'Validation successful', value, 200);
-}
+export default (schema: Joi.ObjectSchema<any>, payload: Record<string, any>): MakeResponse => {
+    // validate the payload
+    const validated = schema.validate(payload);
+    if (validated.error) {
+        // validateErrorData.details[0].message;
+        return response.makeResponse(false, validated.error.details[0].message.replace(/"/g, ''), {});
+    }
+    return response.makeResponse(true, '', {});
+};

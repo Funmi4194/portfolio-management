@@ -1,11 +1,10 @@
 import { NextFunction, Request, RequestHandler, Response } from 'express';
 import * as jwt from '../garage/helper/jwt';
-import userRepository from '../repository/user';
+import {userRepository} from '../repository/user';
 import * as response from '../garage/helper/response';
 import { IContext, MakeResponse } from '../types/generic';
 import { Error } from '../types/error';
 import { IUser } from '../model/user';
-
 
 export default async (req: Request): Promise<IContext | Error> => {
     const ip = req.ip; 
@@ -35,8 +34,9 @@ export default async (req: Request): Promise<IContext | Error> => {
     if (token) {
         const verified = await jwt.verifyToken(token);
         if (verified.status) {
+            const userRepo = await userRepository();
             const userId = (verified.data as { id: string }).id;
-            const user = await userRepository.findByKeyVal('id', userId);
+            const user = await userRepo.findByKeyVal('id', userId);
             if (!user) {
                 return response.sendErrorResponse('Login required!', 401);
             }
@@ -109,8 +109,9 @@ export const authenticate = (
                     return response._sendErrorResponse(res, verified.message, {}, 401);
                 }
 
+                const userRepo = await userRepository();
                 const userId = (verified.data as { id: string }).id;
-                const user = await userRepository.findByKeyVal('id', userId);
+                const user = await userRepo.findByKeyVal('id', userId);
                 if (!user) {
                     return response._sendErrorResponse(res, 'Please login again!', {}, 401);
                 }

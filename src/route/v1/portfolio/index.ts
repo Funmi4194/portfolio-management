@@ -7,4 +7,4 @@ const router = Router();
 // auth(router);
 
 
-export default (app: Router) => app.use('/user', router);
+export default (app: Router) => app.use('/portfolio', router);
